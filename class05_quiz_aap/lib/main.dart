@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:class05_quiz_aap/Home.dart';
-import 'package:class05_quiz_aap/quiz_brain.dart';
+import 'Home.dart';
+import 'quiz_brain.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 

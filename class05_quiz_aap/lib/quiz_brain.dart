@@ -1,7 +1,5 @@
 import 'dart:math';
 
-import 'package:class05_quiz_aap/question.dart';
-
 class QuizBrain {
   int _questionNumber = 0, q=10;
   var rng = new Random();
