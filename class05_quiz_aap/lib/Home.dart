@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
                     ), child: null,
                   ),
                   ListTile(
-                    title: const Text('Result'),
+                    title: const Text('Options 1 to 5'),
                     onTap: () {
                       Navigator.of(context)
                           .pushReplacement(MaterialPageRoute(builder: (context) => QuizApp())); // Update the state of the app.
@@ -54,7 +54,7 @@ class HomePage extends StatelessWidget {
                       highlightColor: Colors.black.withOpacity(.5),
                     ),
                     child: ListTile(
-                      title: const Text('Contact Us'),
+                      title: const Text('Options 1 to 10'),
 
                       onTap: () {
                         Navigator.of(context)
