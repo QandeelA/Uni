@@ -1,3 +1,5 @@
+import 'package:class05_quiz_aap/Contact_US.dart';
+import 'package:class05_quiz_aap/Result.dart';
 import 'package:flutter/material.dart';
 
 import 'main.dart';
@@ -43,26 +45,44 @@ class HomePage extends StatelessWidget {
                   ListTile(
                     title: const Text('Options 1 to 5'),
                     onTap: () {
+                      QuizPage.o =1;
+                      QuizPage.t=5;
                       Navigator.of(context)
                           .pushReplacement(MaterialPageRoute(builder: (context) => QuizApp())); // Update the state of the app.
                       // ...
                     },
                   ),
-                  Theme(
-                    data: ThemeData(
-                      splashColor: Colors.red,
-                      highlightColor: Colors.black.withOpacity(.5),
-                    ),
-                    child: ListTile(
+                   ListTile(
                       title: const Text('Options 1 to 10'),
 
                       onTap: () {
+                        QuizPage.o =2;
+                        QuizPage.t=10;
                         Navigator.of(context)
                             .pushReplacement(MaterialPageRoute(builder: (context) => QuizApp()));
                         // Update the state of the app.
                         // ...
                       },
                     ),
+                  ListTile(
+                    title: const Text('Results'),
+
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushReplacement(MaterialPageRoute(builder: (context) => Result()));
+                      // Update the state of the app.
+                      // ...
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Contact Us'),
+
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushReplacement(MaterialPageRoute(builder: (context) => ContactUs()));
+                      // Update the state of the app.
+                      // ...
+                    },
                   ),
                 ]
             ),

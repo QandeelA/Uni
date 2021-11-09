@@ -1,11 +1,16 @@
 import 'dart:async';
+import 'Contact_US.dart';
 import 'Home.dart';
+import 'Result.dart';
 import 'quiz_brain.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:flutter/services.dart';
 
 QuizBrain quizBrain = QuizBrain();
+ int o;
 class QuizApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,27 +50,46 @@ class QuizApp extends StatelessWidget {
                   ListTile(
                     title: const Text('Options 1 to 5'),
                     onTap: () {
+                      o =1;
+                      QuizPage.t=5;
                       Navigator.of(context)
                           .pushReplacement(MaterialPageRoute(builder: (context) => QuizApp())); // Update the state of the app.
                       // ...
                     },
                   ),
-                  Theme(
-                    data: ThemeData(
-                      splashColor: Colors.red,
-                      highlightColor: Colors.black.withOpacity(.5),
-                    ),
-                    child: ListTile(
-                      title: const Text('Options 1 to 10'),
+      ListTile(
+        title: const Text('Options 1 to 10'),
 
-                      onTap: () {
-                        Navigator.of(context)
-                            .pushReplacement(MaterialPageRoute(builder: (context) => QuizApp()));
-                        // Update the state of the app.
-                        // ...
-                      },
-                    ),
-                  ),
+        onTap: () {
+          o=2;
+          QuizPage.t=10;
+          Navigator.of(context)
+              .pushReplacement(MaterialPageRoute(builder: (context) => QuizApp()));
+          // Update the state of the app.
+          // ...
+        },
+      ),
+      ListTile(
+        title: const Text('Results'),
+
+        onTap: () {
+          Navigator.of(context)
+              .pushReplacement(MaterialPageRoute(builder: (context) => Result()));
+          // Update the state of the app.
+          // ...
+        },
+      ),
+      ListTile(
+        title: const Text('Contact Us'),
+
+        onTap: () {
+          Navigator.of(context)
+              .pushReplacement(MaterialPageRoute(builder: (context) => ContactUs()));
+          // Update the state of the app.
+          // ...
+        },
+      ),
+
                 ]
             ),
           ),
@@ -85,15 +109,18 @@ class QuizApp extends StatelessWidget {
 }
 
 class QuizPage extends StatefulWidget {
+
+  static int c=0, f=0, s=0, t=0, x=0,o=0;
   @override
   _QuizPageState createState() => _QuizPageState();
 }
 
 class _QuizPageState extends State<QuizPage> {
-  int scoreKeeper;
+  TextEditingController _value = TextEditingController();
   int _counter = 10;
   Timer _timer;
   int z = 0;
+  var value;
 
   void _startTimer() {
     _counter = 10;
@@ -106,6 +133,7 @@ class _QuizPageState extends State<QuizPage> {
           _counter--;
         } else if (_counter == 0) {
           _counter = 10;
+          quizBrain.nextQuestion();
         } else if (_counter == 9 && _counter == 0) {
           quizBrain.nextQuestion();
           _counter=10;
@@ -120,31 +148,36 @@ class _QuizPageState extends State<QuizPage> {
       });
     });
   }
-  void checkAnswer(bool userPickedAnswer) {
-
-    int correctAnswer = quizBrain.getCorrectAnswer();
-    scoreKeeper = correctAnswer;
+  void checkAnswer(bool ans) {
+    var correctAnswer = quizBrain.q1+ quizBrain.q2 ;
     setState(() {
-      if (quizBrain.isFinished() == true) {
-        _timer.cancel();
-        _showDialog();
-        quizBrain.reset();
-        Navigator.of(context)
-            .pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
         //Send to API
-      } else {
-        Text(
-          '$correctAnswer',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20.0,
-            height: 10,
-
-          ),
-        );
+        if(ans == true)
+          {
+           if(correctAnswer == value)
+             {
+               QuizPage.c++;
+             }
+           else if(correctAnswer == value)
+           {
+             QuizPage.c++;
+           }
+           else if(correctAnswer != value)
+             {
+               QuizPage.f++;
+             }
+           else
+             QuizPage.s++;
+          }
+        print("Answer is: $correctAnswer" );
+       if (quizBrain.isFinished() == true) {
+          quizBrain.reset();
+          Navigator.of(context)
+              .pushReplacement(MaterialPageRoute(builder: (context) => Result()));
+          QuizPage.t++; //Send to API
+        }
         quizBrain.nextQuestion();
-      }
-    });
+     });
   }
 
   void _showDialog() {
@@ -199,17 +232,20 @@ class _QuizPageState extends State<QuizPage> {
           ),
           Spacer(),
           TextField(
+            controller: _value,
+            keyboardType: TextInputType.number,
             decoration: InputDecoration(
               hintText: "Enter your answer here!",
             ),
+            inputFormatters: <TextInputFormatter> [
+             FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+            ],
           ),
-          Spacer(flex: 1,),
+          Spacer(flex: 2,),
           Expanded(
             child: Padding(
               padding: EdgeInsets.all(15.0),
-              child: FlatButton(
-                textColor: Colors.white,
-                color: Colors.green,
+              child: ElevatedButton(
                 child: Text(
                   'Submit',
                   style: TextStyle(
@@ -218,11 +254,18 @@ class _QuizPageState extends State<QuizPage> {
                   ),
                 ),
                 onPressed: () {
+                  value = _value.text;
+
                   _startTimer();//The user picked true.
                   checkAnswer(true);
-
-                },
+                  },
               ),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(15.0),
+
             ),
           ),
           Spacer(flex: 2,),

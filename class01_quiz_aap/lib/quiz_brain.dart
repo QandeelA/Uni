@@ -1,9 +1,12 @@
 import 'dart:math';
 
+import 'package:class05_quiz_aap/main.dart';
+
 class QuizBrain {
   int _questionNumber = 0, q=10;
   var rng = new Random();
-  int q1 =10, q2=20;
+  int q1 =Random(4).nextInt(10);
+  int q2=Random(5).nextInt(10);
 
   String getQuestionText() {
     String a ="$q1 + $q2 " ;
@@ -17,20 +20,32 @@ class QuizBrain {
       _questionNumber++;
     }
   }
-  int getCorrectAnswer() {
-    int a = q1 +q2;
-    return a;
-  }
 int endCheck()
 {
   return _questionNumber;
 }
   bool isFinished() {
-    if (_questionNumber >= q - 1) {
-      return true;
-    } else {
-      return false;
-    }
+    int y=20, n =15;
+     if ( QuizPage.o == 1)
+       {
+         q=5;
+         if (_questionNumber >= q - 1 ) {
+           return true;
+         } else {
+           return false;
+         }
+       }
+     else if(QuizPage.o == 2 )
+       {
+         q=10;
+         if (_questionNumber >= q - 1 ) {
+           return true;
+         } else {
+           return false;
+         }
+       }
+
+
   }
 
   void reset() {
