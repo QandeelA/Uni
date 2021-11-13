@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'bottom_button.dart';
-
-import 'bottom_button.dart';
-import 'constants.dart';
 import 'reuseable_card.dart';
 
 class ResultsPage extends StatelessWidget {
@@ -20,7 +17,7 @@ class ResultsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: Text('Display Tables'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -58,7 +55,9 @@ class ResultsPage extends StatelessWidget {
                     style: kBodyTextStyle,
                   ),
                 ],
-              ), onPress: null,
+              ), onPress: (){
+
+            },
             ),
           ),
           BottomButton(

@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'main.dart';
+import '../main.dart';
 
 void main() {
   return runApp(
@@ -40,7 +39,7 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds:4), onDoneLoading);
+    return Timer(const Duration(seconds: 3), onDoneLoading);
   }
 
   onDoneLoading() async {

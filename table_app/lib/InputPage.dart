@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
 import 'bottom_button.dart';
 import 'resultpage.dart';
@@ -14,7 +13,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  int table_number = 180;
+  int table_number = 1;
   int starting_limit = 1;
   int Ending_limit = 20;
 
@@ -71,7 +70,9 @@ class _InputPageState extends State<InputPage> {
                     ),
                   ),
                 ],
-              ),
+              ), onPress:(){
+
+              },
             ),
           ),
           Expanded(
@@ -95,7 +96,7 @@ class _InputPageState extends State<InputPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             RoundIconButton(
-                                icon: FontAwesomeIcons.minus,
+                                icon: Icons.ice_skating_rounded,
                                 onPressed: () {
                                   setState(() {
                                     starting_limit--;
@@ -105,7 +106,7 @@ class _InputPageState extends State<InputPage> {
                               width: 10.0,
                             ),
                             RoundIconButton(
-                              icon: FontAwesomeIcons.plus,
+                              icon: Icons.ice_skating_rounded,
                               onPressed: () {
                                 setState(() {
                                   starting_limit++;
@@ -115,7 +116,9 @@ class _InputPageState extends State<InputPage> {
                           ],
                         ),
                       ],
-                    ), onPress: null,
+                    ),onPress: (){
+
+                  },
                   ),
                 ),
                 Expanded(
@@ -136,7 +139,7 @@ class _InputPageState extends State<InputPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             RoundIconButton(
-                              icon: FontAwesomeIcons.minus,
+                              icon: Icons.ice_skating_rounded,
                               onPressed: () {
                                 setState(
                                       () {
@@ -149,7 +152,7 @@ class _InputPageState extends State<InputPage> {
                               width: 10.0,
                             ),
                             RoundIconButton(
-                                icon: FontAwesomeIcons.plus,
+                                icon: Icons.ice_skating_rounded,
                                 onPressed: () {
                                   setState(() {
                                     Ending_limit++;
@@ -158,7 +161,9 @@ class _InputPageState extends State<InputPage> {
                           ],
                         )
                       ],
-                    ),
+                    ), onPress: (){
+
+                  },
                   ),
                 ),
               ],

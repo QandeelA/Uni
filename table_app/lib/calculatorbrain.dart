@@ -11,7 +11,7 @@ class CalculatorBrain {
 
   String calculateBMI() {
 
-    _bmi = starting_limit / pow(table_number / 100, 2);
+    _bmi = (table_number* starting_limit) as double;
     return _bmi.toStringAsFixed(1);
   }
 

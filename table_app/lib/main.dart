@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
-import 'InputPage.dart';
+import 'package:bmi_calculator/screens/input_page.dart';
+
+import 'screens/Contact_US.dart';
+import 'screens/SplashScreen.dart';
+import 'screens/results_screen.dart';
+
 
 
 class BMICalculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Color(0xFF0A0E21),
+        scaffoldBackgroundColor: Color(0xFF0A0E21),
+      ),
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
           backgroundColor:Colors.black26,
-          title: Text('Quiz App'),
+          title: Text('Create your own Table'),
 
         ),
         drawer: Drawer(
@@ -31,15 +39,15 @@ class BMICalculator extends StatelessWidget {
                     ), child: null,
                   ),
                   ListTile(
-                    title: const Text('Options 1 to 5'),
+                    title: const Text('SplashScreen'),
                     onTap: () {
                       Navigator.of(context)
-                          .pushReplacement(MaterialPageRoute(builder: (context) => BMICalculator())); // Update the state of the app.
+                          .pushReplacement(MaterialPageRoute(builder: (context) => SplashScreen())); // Update the state of the app.
                       // ...
                     },
                   ),
                   ListTile(
-                    title: const Text('Options 1 to 10'),
+                    title: const Text('Generate Table'),
 
                     onTap: () {
                       Navigator.of(context)
@@ -49,12 +57,10 @@ class BMICalculator extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    title: const Text('Results'),
-
+                    title: const Text('Result'),
                     onTap: () {
                       Navigator.of(context)
-                          .pushReplacement(MaterialPageRoute(builder: (context) => BMICalculator()));
-                      // Update the state of the app.
+                          .pushReplacement(MaterialPageRoute(builder: (context) => ResultsScreen())); // Update the state of the app.
                       // ...
                     },
                   ),
@@ -63,7 +69,7 @@ class BMICalculator extends StatelessWidget {
 
                     onTap: () {
                       Navigator.of(context)
-                          .pushReplacement(MaterialPageRoute(builder: (context) => BMICalculator()));
+                          .pushReplacement(MaterialPageRoute(builder: (context) => ContactUs()));
                       // Update the state of the app.
                       // ...
                     },
