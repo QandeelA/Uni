@@ -1,15 +1,19 @@
-import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:quiz_1/Questions.dart';
-import 'package:quiz_1/SplashScreen.dart';
 import 'package:quiz_1/main.dart';
 
-
+MyHomePage a = new MyHomePage();
 Question q = new Question();
 class Questionss extends StatefulWidget {
   const Questionss({Key? key}) : super(key: key);
-
+String qq ()
+{
+ String x= q.ques1();
+  String y = q.ques2();
+  String z = x+y;
+  return z;
+}
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -74,7 +78,7 @@ class Questionss extends StatefulWidget {
             Expanded(
               child: Center(
                 child: Text(
-                  q.ques1(),
+                  qq(),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
@@ -83,7 +87,7 @@ class Questionss extends StatefulWidget {
                 ),
               ),
             ),
-
+/*
             Expanded(
               child: Center(
                 child: Text(
@@ -95,7 +99,7 @@ class Questionss extends StatefulWidget {
                   ),
                 ),
               ),
-            ),
+            ),*/
 
             Expanded(
               child: Center(
@@ -116,6 +120,7 @@ class Questionss extends StatefulWidget {
                    color: Colors.black,
                   );
     //The user picked false.
+
     },
     ),
 
@@ -123,10 +128,7 @@ class Questionss extends StatefulWidget {
                 ),
 
             ),
-
-
-
-          ],
+                      ],
         ),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
