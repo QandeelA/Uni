@@ -8,7 +8,7 @@ import 'screens/Contact_US.dart';
 import 'screens/SplashScreen.dart';
 import 'screens/results_screen.dart';
 
-
+int x = 0 ;
 
 class BMICalculator extends StatelessWidget {
   @override
@@ -63,6 +63,7 @@ class BMICalculator extends StatelessWidget {
                     title: const Text('Match Numbers'),
 
                     onTap: () {
+                      x=1;
                       Navigator.of(context)
                           .pushReplacement(MaterialPageRoute(builder: (context) => InputPage()));
                       // Update the state of the app.
@@ -73,6 +74,7 @@ class BMICalculator extends StatelessWidget {
                     title: const Text('Match Alphabets'),
 
                     onTap: () {
+                      x=2;
                       Navigator.of(context)
                           .pushReplacement(MaterialPageRoute(builder: (context) => InputPage()));
                       // Update the state of the app.

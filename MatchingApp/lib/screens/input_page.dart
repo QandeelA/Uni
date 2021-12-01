@@ -3,18 +3,31 @@ import 'package:flutter/material.dart';
 import '../SplashScreen.dart';
 import '../calculator_brain.dart';
 import '../components/reusable_card.dart';
+import '../constants.dart';
 import '../constants/constants.dart';
 import '../components/custom_bottom_bar.dart';
 import '../main.dart';
 import 'Contact_US.dart';
 
+int x =0;
+enum Number {
+  num1,
+  num2,
+}
+String result()
+{
+  String x =" The number is + ${InputPage.score}";
+  return x;
+}
 CalculatorBrain cal = new CalculatorBrain();
 class InputPage extends StatefulWidget {
-static int score;
+static int score=100;
+
   @override
   _InputPageState createState() => _InputPageState();
 }
 class _InputPageState extends State<InputPage> {
+  Number n;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +75,7 @@ class _InputPageState extends State<InputPage> {
                   title: const Text('Match Numbers'),
 
                   onTap: () {
+                    x=1;
                     Navigator.of(context)
                         .pushReplacement(MaterialPageRoute(builder: (context) => InputPage()));
                     // Update the state of the app.
@@ -72,6 +86,7 @@ class _InputPageState extends State<InputPage> {
                   title: const Text('Match Alphabets'),
 
                   onTap: () {
+                    x=2;
                     Navigator.of(context)
                         .pushReplacement(MaterialPageRoute(builder: (context) => InputPage()));
                     // Update the state of the app.
@@ -106,49 +121,213 @@ class _InputPageState extends State<InputPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: ReusableCard(
-              colour: kActiveCardColor,
-              cardChild: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    '${cal.firstnumber()}',
-                    style: kLabelStyle,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    textBaseline: TextBaseline.alphabetic,
-                    children: [
-                      Text(
-                        ' ',
-                        style: kNumberStyle,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: ReusableCard(
-                    colour: kActiveCardColor,
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Starting Limit',
-                          style: kLabelStyle,
-                        ),
-                        ]
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: ReusableCard(
+                      onPress: ( ) {
+
+                        setState(() {
+                          Text(
+                          '${result()}' ,
+                        );
+                        TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 5.0,
+                          color: Colors.white,
+                        );
+                          n = Number.num1;
+                        });
+                      },
+                      colour: n == Number.num1
+                          ? kActiveCardColour
+                          : kInactiveCardColour,
+
                     ),
                   ),
-                ),
-              ],
-            ),
+                  Expanded(
+                    child: ReusableCard(
+                      onPress: () {
+                        setState(() {
+                          n = Number.num2;
+                        });
+                      },
+                      colour:  n == Number.num2
+                          ? kActiveCardColour
+                          : kInactiveCardColour,
+
+                    ),
+                  ),
+                ],
+              )
+
+          ),
+          Expanded(
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: ReusableCard(
+                      onPress: ( ) {
+                        setState(() {
+    Text(
+    '${result()}' ,
+    );
+    TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: 5.0,
+    color: Colors.white,
+    );
+                          n = Number.num1;
+                        });
+                      },
+                      colour: n == Number.num1
+                          ? kActiveCardColour
+                          : kInactiveCardColour,
+
+                    ),
+                  ),
+                  Expanded(
+                    child: ReusableCard(
+                      onPress: () {
+                        setState(() {
+                          n = Number.num2;
+                        });
+                      },
+                      colour:  n == Number.num2
+                          ? kActiveCardColour
+                          : kInactiveCardColour,
+
+                    ),
+                  ),
+                ],
+              )
+
+          ),
+          Expanded(
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: ReusableCard(
+                      onPress: ( ) {
+
+                        setState(() {
+                          Text(
+                            '${result()}' ,
+                          );
+                          TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 5.0,
+                            color: Colors.white,
+                          );
+                          n = Number.num1;
+                        });
+                      },
+                      colour: n == Number.num1
+                          ? kActiveCardColour
+                          : kInactiveCardColour,
+
+                    ),
+                  ),
+                  Expanded(
+                    child: ReusableCard(
+                      onPress: () {
+                        setState(() {
+                          n = Number.num2;
+                        });
+                      },
+                      colour:  n == Number.num2
+                          ? kActiveCardColour
+                          : kInactiveCardColour,
+
+                    ),
+                  ),
+                ],
+              )
+
+          ),
+          Expanded(
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: ReusableCard(
+                      onPress: ( ) {
+
+                        setState(() {
+                          Text(
+                            '${result()}' ,
+                          );
+                          TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 5.0,
+                            color: Colors.white,
+                          );
+                          n = Number.num1;
+                        });
+                      },
+                      colour: n == Number.num1
+                          ? kActiveCardColour
+                          : kInactiveCardColour,
+
+                    ),
+                  ),
+                  Expanded(
+                    child: ReusableCard(
+                      onPress: () {
+                        setState(() {
+                          n = Number.num2;
+                        });
+                      },
+                      colour:  n == Number.num2
+                          ? kActiveCardColour
+                          : kInactiveCardColour,
+
+                    ),
+                  ),
+                ],
+              )
+
+          ),
+          Expanded(
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: ReusableCard(
+                      onPress: ( ) {
+
+                        setState(() {
+                          Text(
+                            '${result()}' ,
+                          );
+                          TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 5.0,
+                            color: Colors.white,
+                          );
+                          n = Number.num1;
+                        });
+                      },
+                      colour: n == Number.num1
+                          ? kActiveCardColour
+                          : kInactiveCardColour,
+
+                    ),
+                  ),
+                  Expanded(
+                    child: ReusableCard(
+                      onPress: () {
+                        setState(() {
+                          n = Number.num2;
+                        });
+                      },
+                      colour:  n == Number.num2
+                          ? kActiveCardColour
+                          : kInactiveCardColour,
+
+                    ),
+                  ),
+                ],
+              )
+
           ),
           CustomBottomBar(
             customBottomBarLabel: 'Result',
@@ -165,5 +344,6 @@ class _InputPageState extends State<InputPage> {
         ],
       ),
     );
+
   }
 }

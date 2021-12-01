@@ -7,13 +7,10 @@ import 'Contact_US.dart';
 import 'SplashScreen.dart';
 import 'input_page.dart';
 
-
+int x = 0 ;
 InputPage aa = new InputPage();
 class ResultsScreen extends StatelessWidget {
-  List bmiResult= [];
   static int y=InputPage.score;
-  String x;
-  int e = 0;
 
 int result()
 {
@@ -73,6 +70,7 @@ int result()
                   title: const Text('Match Numbers'),
 
                   onTap: () {
+                    x =1;
                     Navigator.of(context)
                         .pushReplacement(MaterialPageRoute(builder: (context) => InputPage()));
                     // Update the state of the app.
@@ -83,6 +81,7 @@ int result()
                   title: const Text('Match Alphabets'),
 
                   onTap: () {
+                    x=2;
                     Navigator.of(context)
                         .pushReplacement(MaterialPageRoute(builder: (context) => InputPage()));
                     // Update the state of the app.
