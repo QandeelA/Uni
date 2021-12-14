@@ -1,7 +1,8 @@
-import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
 
 class CalculatorBrain {
-  CalculatorBrain({required this.table_number, required this.starting_limit, required this.ending_limit });
+  CalculatorBrain({@required this.table_number, @required this.starting_limit, @required this.ending_limit });
 
   final int table_number;
   final int starting_limit;

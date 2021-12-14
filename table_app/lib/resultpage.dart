@@ -5,9 +5,9 @@ import 'reuseable_card.dart';
 
 class ResultsPage extends StatelessWidget {
   ResultsPage(
-      {required this.interpretation,
-        required this.bmiResult,
-        required this.resultText});
+      {@required this.interpretation,
+        @required this.bmiResult,
+        @required this.resultText});
 
   final String bmiResult;
   final String resultText;

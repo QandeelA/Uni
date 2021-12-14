@@ -41,7 +41,6 @@ class ContactUsState extends State<ContactUs> {
         if (value.isEmpty) {
           return 'Email is Required';
         }
-
         if (!RegExp(
             r"[a-z0-9!#$%&'+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'+/=?^_`{|}~-]+)@(?:[a-z0-9](?:[a-z0-9-][a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
             .hasMatch(value)) {
