@@ -7,7 +7,9 @@ Gif:
 
 
 ![1st](https://user-images.githubusercontent.com/57446274/147753333-279682f5-fc04-4fb3-ad36-fe06baf0bc91.gif)
+
 ![2nd](https://user-images.githubusercontent.com/57446274/147753342-f1f2e680-84b5-4154-a96b-c30f0f4dfd7e.gif)
+
 ![3rd](https://user-images.githubusercontent.com/57446274/147753350-4a7ad0e9-3d81-40c2-8112-bded5b2464e0.gif)
 
 
