@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lab_final_task/password.dart';
-import 'package:lab_final_task/uploadPass.dart';
-
 import 'RetrievePassword.dart';
 import 'SplashScreen.dart';
 import 'generatepassword.dart';
@@ -84,7 +82,7 @@ class GeneratePassword extends StatelessWidget {
 
                       onTap: () {
                         Navigator.of(context)
-                            .pushReplacement(MaterialPageRoute(builder: (context) => uploadpass()));
+                            .pushReplacement(MaterialPageRoute(builder: (context) => Retrieve()));
                         // Update the state of the app.
                         // ...
                       },
@@ -127,7 +125,7 @@ class _GeneratePasswordsState extends State<GeneratePasswords> {
             children: [
               Row(
                 children: [
-                  Text("Generate Strong Random Password",style: TextStyle(
+                  Text("Generate Simple Random Password",style: TextStyle(
                       fontSize: 18, fontWeight: FontWeight.bold
                   ),),
                 ],

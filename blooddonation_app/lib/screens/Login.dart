@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'SplashScreen.dart';
 import 'TipsAndNews.dart';
 import 'WhoCanDonate.dart';
+import 'package:flutter/services.dart' show ByteData, rootBundle;
 
 class Login_Page extends StatelessWidget {
   @override
@@ -92,11 +93,31 @@ class Login_PagePage extends StatefulWidget {
 }
 
 class _Login_PagePageState extends State<Login_PagePage> {
-  String x = "C:/Users/khali/Documents/Donors.xlsx";
+  String x = "C://Users//khali//Downloads/Blood.xlsx";
   TextEditingController _value = TextEditingController();
   TextEditingController _value2 = TextEditingController();
-   var value, pass;
-  Future<int> log()
+  var value, pass;
+  var e, p;
+  List<dynamic> f;
+  Future<int> log()  async {
+
+    ByteData data = await rootBundle.load("Images/Blood.xlsx");
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+
+    for (var table in excel.tables.keys) {
+      print(table); //sheet Name
+      print(excel.tables[table].maxCols);
+      print(excel.tables[table].maxRows);
+      for (var row in excel.tables[table].rows) {
+        print("$row");
+        //f =  excel.tables[table].;
+
+        print("hi");
+    }
+    }
+  }
+ /* Future<int> log()
   async {
     ByteData data = await rootBundle.load("${x}");
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
@@ -107,7 +128,7 @@ class _Login_PagePageState extends State<Login_PagePage> {
       }
     }
     return 1;
-  }
+  }*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -152,8 +173,10 @@ class _Login_PagePageState extends State<Login_PagePage> {
                     onPressed: () {
                       value = _value.text;
                       pass = _value2.text;
+                      e=value;
                       print(value);
                       print(pass);
+                      log();
                       /* Navigator.of(context)
                         .pushReplacement(MaterialPageRoute(builder: (context) => DonorHome()));*/
                       //Send to API

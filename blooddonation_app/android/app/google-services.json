@@ -1,18 +1,27 @@
 {
   "project_info": {
     "project_number": "296819389887",
+    "firebase_url": "https://blood-app-b2abf-default-rtdb.firebaseio.com",
     "project_id": "blood-app-b2abf",
     "storage_bucket": "blood-app-b2abf.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:296819389887:android:2f0174dbef1ebfa2935d0a",
+        "mobilesdk_app_id": "1:296819389887:android:e5330bb5eef4ad7c935d0a",
         "android_client_info": {
-          "package_name": "com.example.blood_app"
+          "package_name": "com.example.blooddonation_app"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "296819389887-95sok3q5ehk4oukb9ptcgji30kvnfmpn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.blooddonation_app",
+            "certificate_hash": "482a2a3585e09ea0cf3f11453d1f35793c724e7a"
+          }
+        },
         {
           "client_id": "296819389887-9p0r05uhuub9m3uhsl335fa5m0vmp9o0.apps.googleusercontent.com",
           "client_type": 3

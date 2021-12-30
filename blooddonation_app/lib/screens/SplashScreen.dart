@@ -2,12 +2,11 @@ import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../main.dart';
 
-import 'main.dart';
-
-void main()  async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  Firebase.initializeApp();
   return runApp(
     MaterialApp(
       home: Scaffold(
@@ -37,17 +36,16 @@ class SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        image: DecorationImage(image: AssetImage("Images/JampackedBothHoatzin-size_restricted.gif")),
+        image: DecorationImage(image: AssetImage("Images/spalsh.png")),
       ),
     );
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds:8), onDoneLoading);
+    return Timer(const Duration(seconds:2), onDoneLoading);
   }
-
   onDoneLoading() async {
     Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => MyApp()));
+        .pushReplacement(MaterialPageRoute(builder: (context) => blooddonation()));
   }
 }

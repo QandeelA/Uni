@@ -4,8 +4,6 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:lab_final_task/part1.dart';
 import 'package:lab_final_task/password.dart';
-import 'package:lab_final_task/uploadPass.dart';
-
 import 'RetrievePassword.dart';
 import 'SplashScreen.dart';
 
@@ -86,7 +84,7 @@ class MyApp extends StatelessWidget {
 
                         onTap: () {
                           Navigator.of(context)
-                              .pushReplacement(MaterialPageRoute(builder: (context) => uploadpass()));
+                              .pushReplacement(MaterialPageRoute(builder: (context) => Retrieve()));
                           // Update the state of the app.
                           // ...
                         },

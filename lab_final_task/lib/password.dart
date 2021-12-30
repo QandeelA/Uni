@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lab_final_task/part1.dart';
-import 'package:lab_final_task/uploadPass.dart';
 import 'package:random_password_generator/random_password_generator.dart';
-
 import 'RetrievePassword.dart';
 import 'SplashScreen.dart';
 import 'generatepassword.dart';
@@ -85,7 +83,7 @@ class MyApps extends StatelessWidget {
 
                       onTap: () {
                         Navigator.of(context)
-                            .pushReplacement(MaterialPageRoute(builder: (context) => uploadpass()));
+                            .pushReplacement(MaterialPageRoute(builder: (context) => Retrieve()));
                         // Update the state of the app.
                         // ...
                       },

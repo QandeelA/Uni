@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lab_final_task/part1.dart';
 import 'package:lab_final_task/password.dart';
-import 'package:lab_final_task/uploadPass.dart';
 import 'SplashScreen.dart';
 import 'main.dart';
 import 'board.dart';
@@ -15,10 +14,6 @@ class Retrieve extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData.dark().copyWith(
-          primaryColor: Color(0xFF0A0E21),
-          scaffoldBackgroundColor: Color(0xFF0A0E21),
-        ),
         home: Scaffold(
           appBar: AppBar(
             centerTitle: true,
@@ -86,7 +81,7 @@ class Retrieve extends StatelessWidget {
 
                       onTap: () {
                         Navigator.of(context)
-                            .pushReplacement(MaterialPageRoute(builder: (context) => uploadpass()));
+                            .pushReplacement(MaterialPageRoute(builder: (context) => Retrieve()));
                         // Update the state of the app.
                         // ...
                       },
@@ -94,9 +89,7 @@ class Retrieve extends StatelessWidget {
 
                   ]
               ),
-            ),
-          ),
-          backgroundColor: Colors.cyan,
+            ),),
           body: RetrievePage(),
         )
     );
@@ -129,6 +122,7 @@ class _RetrievePageState extends State<RetrievePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Column(
         children: <Widget>[
           Flexible(
@@ -190,8 +184,10 @@ class _RetrievePageState extends State<RetrievePage> {
           )
         ],
       ),
-    );
-  }
+  );
+
+    }
+
 
    void _onEntryAdded(Event event) {
      setState(() {
