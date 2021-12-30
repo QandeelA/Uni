@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:lab_final_task/part1.dart';
 import 'package:lab_final_task/password.dart';
 
+import 'RetrievePassword.dart';
 import 'SplashScreen.dart';
 import 'main.dart';
 
@@ -86,7 +87,7 @@ class uploadpass extends StatelessWidget {
 
     onTap: () {
     Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => MyApps()));
+        .pushReplacement(MaterialPageRoute(builder: (context) => Retrieve()));
     // Update the state of the app.
     // ...
     },
@@ -118,7 +119,7 @@ class _uploadpassStateState extends State<uploadpassState> {
   int x =1;
   void uploadd(String passw)
   {
-   database.reference().child("Passwords $x").set(
+   database.reference().child("Passwords").set(
        {"Pass": "$passw", "index": "$x"}
    );
    setState(() {

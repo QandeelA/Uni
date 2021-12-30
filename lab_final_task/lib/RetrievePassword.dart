@@ -1,12 +1,13 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lab_final_task/part1.dart';
 import 'package:lab_final_task/password.dart';
 import 'package:lab_final_task/uploadPass.dart';
-
 import 'SplashScreen.dart';
 import 'main.dart';
+import 'board.dart';
 
 class Retrieve extends StatelessWidget {
   const Retrieve({Key key}) : super(key: key);
@@ -110,46 +111,113 @@ class RetrievePage extends StatefulWidget {
 }
 
 class _RetrievePageState extends State<RetrievePage> {
-   final dref = FirebaseDatabase.instance.reference();
-   DatabaseReference databaseReference;
-   setData(){
-     dref.child("Password").set(
-       {
-       'id': '01',
-       }
-     );
-   }
-   showData()
-   {
-     dref.once().then((snapshot)
-         {
-           print(snapshot.toString());
-         });
-   }
-   @override
-   void initState(){
-     super.initState();
-     databaseReference = dref;
-   }
+  List<Board> boardMessages = List();
+  Board board;
+  final FirebaseDatabase database = FirebaseDatabase.instance;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  DatabaseReference databaseReference;
+
+  @override
+  void initState() {
+    super.initState();
+
+    board = Board("", "");
+    databaseReference = database.reference().child("Passwords");
+    databaseReference.onChildAdded.listen(_onEntryAdded);
+    databaseReference.onChildChanged.listen(_onEntryChanged);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          child: ElevatedButton(
-            onPressed: showData,
-            child: Text(
-              'Show Data',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.teal,
+      body: Column(
+        children: <Widget>[
+          Flexible(
+            flex: 0,
+            child: Center(
+              child: Form(
+                key: formKey,
+                child: Flex(
+                  direction: Axis.vertical,
+                  children: <Widget>[
+                    ListTile(
+                      leading: Icon(Icons.subject),
+                      title: TextFormField(
+                        initialValue: "",
+                        onSaved: (val) => board.Pass = val,
+                        validator: (val) => val == "" ? val : null,
+                      ),
+                    ),
+
+                    ListTile(
+                      leading: Icon(Icons.message),
+                      title: TextFormField(
+                        initialValue: "",
+                        onSaved: (val) => board.Index = val,
+                        validator: (val) => val == "" ? val : null,
+                      ),
+                    ),
+
+                    //Send or Post button
+                    FlatButton(
+                      child: Text("Post"),
+                      color: Colors.blue,
+                      onPressed: () {
+                        handleSubmit();
+                      },
+                    )
+                  ],
+                ),
               ),
             ),
           ),
-        ),
+          Flexible(
+            child: FirebaseAnimatedList(
+              query: databaseReference,
+              itemBuilder: (_, DataSnapshot snapshot,
+                  Animation<double> animation, int index) {
+                return Card(
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.white,
+                    ),
+                    title: Text(boardMessages[index].Index ),
+                    subtitle: Text(boardMessages[index].Pass),
 
+                  ),
+                );
+              },
+            ),
+          )
+        ],
       ),
     );
   }
+
+   void _onEntryAdded(Event event) {
+     setState(() {
+       boardMessages.add(Board.fromSnapshot(event.snapshot));
+     });
+   }
+
+   void _onEntryChanged(Event event) {
+     var oldEntry = boardMessages.singleWhere((entry) {
+       return entry.key == event.snapshot.key;
+     });
+
+     setState(() {
+       boardMessages[boardMessages.indexOf(oldEntry)] =
+           Board.fromSnapshot(event.snapshot);
+     });
+   }
+
+   void handleSubmit() {
+     final FormState form = formKey.currentState;
+     if (form.validate()) {
+       form.save();
+       form.reset();
+       //save form data to the database
+       databaseReference.push().set(board.toJson());
+     }
+   }
 }
 
