@@ -37,10 +37,15 @@ dependencies:
   draggable_scrollbar: ^0.0.4
 
 
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   font_awesome_flutter: ^9.1.0
+  firebase_auth: any
+  firebase_core: any
+  firebase_database: any
+  pinput: any
 
 dev_dependencies:
   flutter_test:

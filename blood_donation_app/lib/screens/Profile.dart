@@ -83,7 +83,10 @@ class ProfileApp extends StatelessWidget {
     ),
     ),
     ),
-           body: Column(
+           body:Column(
+               children: [
+                 SingleChildScrollView (
+           child: Column(
         children: <Widget>[
           Container(
               decoration: BoxDecoration(
@@ -217,7 +220,10 @@ class ProfileApp extends StatelessWidget {
           ),
         ],
       ),
-    ), );
+    ),
+  ],  ),
+    ),
+    );
   }
 }
 

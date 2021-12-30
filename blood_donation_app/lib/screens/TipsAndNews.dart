@@ -8,10 +8,11 @@ class TipsAndNews extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           centerTitle: true,
           backgroundColor:Colors.black26,
-          title: Text('HomePage '),
+          title: Text('Tips '),
         ),
         drawer: Drawer(
           child: Container(
@@ -74,47 +75,50 @@ class TipsAndNewsPage extends StatefulWidget {
 class _TipsAndNewsPageState extends State<TipsAndNewsPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: GestureDetector(
-              child: Container(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      '\n Tip 1',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      '\n Wear your mask!!',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                margin: EdgeInsets.all(15.0),
-                decoration: BoxDecoration(
-                  color: Colors.black12,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
-            ),
-          ),
 
-        ],
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body:  Container(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                height: 550,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children:[
+                  Container(
+                    height: 550,
+                    width: 300,
+                    margin: EdgeInsets.all(10),
+                    child: Center(
+                      child: Text(
+                        "index",
+                        style: TextStyle(color: Colors.white, fontSize: 15),
+                      ),
+                    ),
+                    color: Colors.black45,
+                  ),
+                    Container(
+                      height: 550,
+                      width: 300,
+                      margin: EdgeInsets.all(10),
+                      child: Center(
+                        child: Text(
+                          "index",
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                      ),
+                      color: Colors.black45,
+                    ),
+                  ],  ),
+              ),
+            ], ),
+        ),
       ),
     );
+
   }
 }
 

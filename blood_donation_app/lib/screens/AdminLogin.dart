@@ -117,10 +117,11 @@ class AdminHomePage extends StatefulWidget {
 }
 
 class _AdminHomePageState extends State<AdminHomePage> {
+  final ScrollController _scrollController = ScrollController();
   Future openFile() async {
     final file = await pickFile();
     if (file ==null)
-      return;
+      return file;
     print ('Path: ${file.path}');
     OpenFile.open(file.path);
   }
@@ -136,12 +137,14 @@ class _AdminHomePageState extends State<AdminHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-
+      body: Center(
+      child: Scrollbar(
+      isAlwaysShown: true,
+      controller: _scrollController,
+      child: Container (
+              child: Column(
+           children: [
+                 Expanded(
             child: GestureDetector(
               child: Container(
                 child: Column(
@@ -185,7 +188,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
               ),
             ),
           ),
-          Expanded(
+                 Expanded(
             flex: 1,
             child: GestureDetector(
               child: Container(
@@ -229,7 +232,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
               ),
             ),
           ),
-          Expanded(
+                 Expanded(
             flex: 1,
             child: GestureDetector(
               child: Container(
@@ -272,9 +275,12 @@ class _AdminHomePageState extends State<AdminHomePage> {
               ),
             ),
           ),
-        ],
+           ],
+         )
+    ),
+    ),
       ),
-       );
+    );
   }
 }
 

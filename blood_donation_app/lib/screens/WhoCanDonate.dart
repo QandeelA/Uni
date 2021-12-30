@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'Login.dart';
 import 'TipsAndNews.dart';
-String d = " General \n  Who can donate blood?	\n Top \n   A blood donor must: \n  be in good general health \n  be aged 18 years or older but less than 60 years \n  weigh at least 45 Kg \n   have a hemoglobin level of at least 12.5 g/dl \n   not have donated blood in the last 3 months";
+String d = "Generally: \nWho can donate blood?\nA blood donor must: \n  --> be in good general health \n  -->  be aged 18 years or older but less than 60 years \n   --> weigh at least 45 Kg \n   --> have a hemoglobin level of at least 12.5 g/dl \n   --> not have donated blood in the last 3 months";
 
 class donate extends StatelessWidget {
   @override
@@ -77,44 +77,34 @@ class _donatePageState extends State<donatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: GestureDetector(
-              child: Container(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      '\n Tip 1',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.bold,
+      resizeToAvoidBottomInset: false,
+      body:  Container(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                height: 550,
+                child: ListView.builder(
+                  itemCount: 1,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) => Container(
+                    height: 550,
+                    width: 400,
+                    margin: EdgeInsets.all(10),
+                    child: Center(
+                      child: Text(
+                        "$d",
+                        style: TextStyle(color: Colors.white, fontSize: 15),
                       ),
+
                     ),
-                    Text(
-                      '\n ${d}',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                margin: EdgeInsets.all(15.0),
-                decoration: BoxDecoration(
-                  color: Colors.black12,
-                  borderRadius: BorderRadius.circular(10.0),
+                    color: Colors.black45,
+                  ),
                 ),
               ),
-            ),
-          ),
-
-        ],
+            ], ),
+        ),
       ),
     );
   }

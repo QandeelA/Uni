@@ -184,7 +184,7 @@ class _LoginDonorPageState extends State<LoginDonorPage> {
     decoration: const InputDecoration(
       border: OutlineInputBorder(),
       labelText: 'Contact number',
-      prefixText: '+961 ',
+      prefixText: '+92 ',
     ),
   );
 

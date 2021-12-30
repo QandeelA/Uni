@@ -102,34 +102,15 @@ class AddPage extends StatefulWidget {
   _AddPageState createState() => _AddPageState();
 }
 class _AddPageState extends State<AddPage> {
-  Future openFile() async {
-   final file = await pickFile();
-   if (file ==null)
-   return;
-   print ('Path: ${file.path}');
-   OpenFile.open(file.path);
-  }
-   Future<io.File?> pickFile() async {
-    final result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['xlsx'],
-      allowMultiple: false,
-    );
-    if (result==null)return null;
-    return io.File(result.files.first.path!);
-   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
             child: GestureDetector(
               child: Container(
-                height: 100,
-                width: 100,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -147,7 +128,9 @@ class _AddPageState extends State<AddPage> {
                             elevation: 10.0,
                             constraints: BoxConstraints.tightFor(width: 150.0, height: 150.0),
                             shape: CircleBorder(),
-                          onPressed: () => openFile()
+                          onPressed: () {
+
+                          }
                         ),
                       ],
                     ),
@@ -155,16 +138,16 @@ class _AddPageState extends State<AddPage> {
                 ),
                 margin: EdgeInsets.all(15.0),
                 decoration: BoxDecoration(
-                  color: Colors.black12,
-                  borderRadius: BorderRadius.circular(10.0),
+                  image: DecorationImage(
+                    image: AssetImage("Images/type.png"),
+                  ),
                 ),
               ),
             ),
           ),
 
         ],
-      ),
-    );
+      ),);
 
   }
 }

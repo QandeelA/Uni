@@ -108,6 +108,9 @@ class _DonorHomePageState extends State<DonorHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        children: [
+          SingleChildScrollView(
+        child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -266,6 +269,8 @@ class _DonorHomePageState extends State<DonorHomePage> {
           ),
         ],
       ),
+    ),
+    ],),
     );
   }
 }

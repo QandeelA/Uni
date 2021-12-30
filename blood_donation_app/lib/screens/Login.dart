@@ -1,12 +1,10 @@
 import 'dart:typed_data';
-
 import 'package:blood_donation_app/screens/AdminLogin.dart';
 import 'package:blood_donation_app/screens/RegistrationScreen.dart';
 import 'package:excel/excel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'DonorHome.dart';
 import 'SplashScreen.dart';
 import 'TipsAndNews.dart';
 import 'WhoCanDonate.dart';
@@ -23,6 +21,7 @@ class Login_Page extends StatelessWidget {
         ),
         drawer: Drawer(
           child: Container(
+
             color: Colors.red,
             child: ListView(
               // Important: Remove any padding from the ListView.
@@ -111,40 +110,36 @@ class _Login_PagePageState extends State<Login_PagePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
+        body:SingleChildScrollView (
+               child: Container(
+                 margin: EdgeInsets.only(top: 150),
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("Images/type.png"),
             ),
           ),
-    child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+                 child: Expanded(
+                  child: Column(
               children: [
-                Text('\n \n \n \n \n'),
-                TextField(
+
+                    TextField(
                   controller: _value,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                    hintText: "Enter your answer here!",
+                    hintText: "Enter your email here!",
                   ),
                 ),
-                TextField(
+                    TextField(
                   controller: _value2,
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    hintText: "Enter your answer here!",
+                    hintText: "Enter your password here!",
                   ),
                 ),
-                Text(
+                    Text(
                   '\n \n ',
                 ),
-                RawMaterialButton(
+                   RawMaterialButton(
                   child: Text(
                     'Login',
                     style: TextStyle(color: Colors.white, fontSize: 25),
@@ -162,10 +157,11 @@ class _Login_PagePageState extends State<Login_PagePage> {
                         .pushReplacement(MaterialPageRoute(builder: (context) => DonorHome()));*/
                     //Send to API
                   },
-                ),Text(
+                ),
+                    Text(
                   '\n \n ',
                 ),
-                RawMaterialButton(
+                   RawMaterialButton(
                   child: Text(
                     'AdminSite',
                     style: TextStyle(color: Colors.white, fontSize: 15),
@@ -183,9 +179,10 @@ class _Login_PagePageState extends State<Login_PagePage> {
               ],
             ),
           ),
-        ],
       ),
     )
+
+   //], ),
     );
   }
 }
