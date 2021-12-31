@@ -17,7 +17,7 @@ class LoginDonor extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.black26,
-          title: Text('Edit Profile '),
+          title: Text('Request for Blood '),
         ),
         drawer: Drawer(
           child: Container(
@@ -29,7 +29,7 @@ class LoginDonor extends StatelessWidget {
                   const DrawerHeader(
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("Images/drop.jpg"),
+                          image: AssetImage("Images/data.png"),
                           fit: BoxFit.cover,
                         )
                     ), child: null,

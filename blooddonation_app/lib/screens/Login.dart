@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 import 'AdminLogin.dart';
+import 'DonorHome.dart';
 import 'Registration.dart';
 import 'package:excel/excel.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,7 +32,7 @@ class Login_Page extends StatelessWidget {
                   const DrawerHeader(
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("Images/drop.jpg"),
+                          image: AssetImage("Images/data.png"),
                           fit: BoxFit.cover,
                         )
                     ), child: null,
@@ -134,10 +135,10 @@ class _Login_PagePageState extends State<Login_PagePage> {
     return Scaffold(
         body:SingleChildScrollView (
           child: Container(
-            margin: EdgeInsets.only(top: 150),
+            margin: EdgeInsets.only(top: 175),
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("Images/type.png"),
+                image: AssetImage("Images/hearts_blood_drive-01.jpg"),
               ),
             ),
             child: Expanded(
@@ -177,14 +178,12 @@ class _Login_PagePageState extends State<Login_PagePage> {
                       print(value);
                       print(pass);
                       log();
-                      /* Navigator.of(context)
-                        .pushReplacement(MaterialPageRoute(builder: (context) => DonorHome()));*/
+                       Navigator.of(context)
+                        .pushReplacement(MaterialPageRoute(builder: (context) => DonorHome()));
                       //Send to API
                     },
                   ),
-                  Text(
-                    '\n \n ',
-                  ),
+
                   RawMaterialButton(
                     child: Text(
                       'AdminSite',

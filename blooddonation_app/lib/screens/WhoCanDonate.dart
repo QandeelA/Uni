@@ -24,7 +24,7 @@ class donate extends StatelessWidget {
                   const DrawerHeader(
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("Images/drop.jpg"),
+                          image: AssetImage("Images/data.png"),
                           fit: BoxFit.cover,
                         )
                     ), child: null,

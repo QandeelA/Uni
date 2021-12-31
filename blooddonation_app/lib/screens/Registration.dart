@@ -7,7 +7,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import '../main.dart';
-import 'OTP.dart';
 import 'SplashScreen.dart';
 import 'TipsAndNews.dart';
 import 'WhoCanDonate.dart';
@@ -41,7 +40,7 @@ class Registration extends StatelessWidget {
                   const DrawerHeader(
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("Images/drop.jpg"),
+                          image: AssetImage("Images/data.png"),
                           fit: BoxFit.cover,
                         )
                     ), child: null,

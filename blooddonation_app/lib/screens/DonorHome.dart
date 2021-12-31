@@ -1,3 +1,6 @@
+import 'package:file_picker/file_picker.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../main.dart';
@@ -29,7 +32,7 @@ class DonorHome extends StatelessWidget {
                   const DrawerHeader(
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("Images/drop.jpg"),
+                          image: AssetImage("Images/data.png"),
                           fit: BoxFit.cover,
                         )
                     ), child: null,
@@ -103,174 +106,192 @@ class DonorHomePage extends StatefulWidget {
 }
 
 class _DonorHomePageState extends State<DonorHomePage> {
+  final ScrollController _scrollController = ScrollController();
+  Future openFile() async {
+    // get file
+    final result = await FilePicker.platform.pickFiles(
+        type: FileType.any, allowMultiple: false);
+    if (result.files.first != null) {
+      var fileBytes = result.files.first.bytes;
+      var fileName = result.files.first.name;
 
+      // upload file
+      await FirebaseStorage.instance.ref('uploads/$fileName').putData(
+          fileBytes);
+    }
+  }
+  /*Future openFile() async {
+    final file = await pickFile();
+    if (file ==null)
+      return file;
+    print ('Path: ${file.path}');
+    OpenFile.open(file.path);
+  }
+  Future<io.File> pickFile() async {
+    final result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['xlsx'],
+      allowMultiple: false,
+    );
+    if (result==null)return null;
+    return io.File(result.files.first.path);
+  }*/
+  @override
+  void initState() {
+    super.initState();
+    Firebase.initializeApp();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: GestureDetector(
-                    child: Container(
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            '\n Profile 1',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 22.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            '\n \n \n ',
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              RaisedButton(
-                                child: Text(
-                                  'Detail',
-                                  style: TextStyle(color: Colors.white, fontSize: 15),
-                                ),
-                                elevation: 10.0,
-                                color: Colors.deepOrangeAccent,
-                                onPressed: () async {
-                                  /* Your blah blah code here */
-                                  //  ByteData data = await rootBundle.load("Assests/Donors.xlsx");
-                                  // var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-                                  //  var excel = Excel.decodeBytes(bytes);
-                                  //  for (var table in excel.tables.keys) {
-                                  //    for (var row in excel.tables[table]!.rows) {
-                                  //     print("$row");
-                                  //    }
-                                  //  }
-
-                                  Navigator.of(context)
-                                      .pushReplacement(MaterialPageRoute(builder: (context) => ProfileApp()));
-                                  //Send to API
-                                },
+      body: Center(
+        child: Scrollbar(
+          isAlwaysShown: true,
+          controller: _scrollController,
+          child: Container (
+              child: Column(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      child: Container(
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              '\n\n\nAlice James \n Blood Group O+ \n Contact number: +92-345-6743294',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold,
                               ),
-
-                            ],
-                          ),
-                        ],),
-                      margin: EdgeInsets.all(15.0),
-                      decoration: BoxDecoration(
-                        color: Colors.black12,
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: GestureDetector(
-                    child: Container(
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            '\n Profile 2',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 22.0,
-                              fontWeight: FontWeight.bold,
                             ),
-                          ),
-                          Text(
-                            '\n \n \n ',
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              RaisedButton(
-                                child: Text(
-                                  'Detail',
-                                  style: TextStyle(color: Colors.white, fontSize: 15),
+
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                RawMaterialButton(
+                                    child: Text(
+                                      'Details',
+                                      style: TextStyle(color: Colors.white, fontSize: 15),
+                                    ),
+                                    fillColor: Colors.deepOrangeAccent,
+                                    elevation: 10.0,
+                                    constraints: BoxConstraints.tightFor(width: 50.0, height: 50.0),
+                                    shape: CircleBorder(),
+
+                                    onPressed: ()
+                                    {
+                                      Navigator.of(context)
+                                          .pushReplacement(MaterialPageRoute(builder: (context) => ProfileApp()));
+                                    }
                                 ),
-                                elevation: 10.0,
-                                color: Colors.deepOrangeAccent,
 
-                                onPressed: () {
-                                  Navigator.of(context)
-                                      .pushReplacement(MaterialPageRoute(builder: (context) => LoginDonor()));
-                                  //Send to API
-                                },
-                              ),
-
-                            ],
-                          ),
-                        ],
-                      ),
-                      margin: EdgeInsets.all(15.0),
-                      decoration: BoxDecoration(
-                        color: Colors.black12,
-                        borderRadius: BorderRadius.circular(10.0),
+                              ],
+                            ),
+                          ],
+                        ),
+                        margin: EdgeInsets.all(15.0),
+                        decoration: BoxDecoration(
+                          color: Colors.black12,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: GestureDetector(
-                    child: Container(
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            '\n Profile 3',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 22.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            '\n \n \n ',
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              RaisedButton(
-                                child: Text(
-                                  'Detail',
-                                  style: TextStyle(color: Colors.white, fontSize: 15),
-                                ),
-                                elevation: 10.0,
-                                color: Colors.deepOrangeAccent,
+                  Expanded(
+                    flex: 1,
+                    child: GestureDetector(
+                      child: Container(
+                        child: Column(
 
-                                onPressed: () {
-                                  Navigator.of(context)
-                                      .pushReplacement(MaterialPageRoute(builder: (context) => LoginDonor()));
-                                  //Send to API
-                                },
+                          children: <Widget>[
+                            Text(
+                              '\n\n\nQandeel \n Blood Group A+ \n Contact number: +92-345-6743294',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold,
                               ),
+                            ),
 
-                            ],
-                          ),
-                        ],
-                      ),
-                      margin: EdgeInsets.all(15.0),
-                      decoration: BoxDecoration(
-                        color: Colors.black12,
-                        borderRadius: BorderRadius.circular(10.0),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [RawMaterialButton(
+                                  child: Text(
+                                    'Details',
+                                    style: TextStyle(color: Colors.white, fontSize: 15),
+                                  ),
+                                  fillColor: Colors.deepOrangeAccent,
+                                  elevation: 10.0,
+                                  constraints: BoxConstraints.tightFor(width: 50.0, height: 50.0),
+                                  shape: CircleBorder(),
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pushReplacement(MaterialPageRoute(builder: (context) => ProfileApp()));
+                                  }
+                              ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        margin: EdgeInsets.all(15.0),
+                        decoration: BoxDecoration(
+                          color: Colors.black12,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
+                  Expanded(
+                    flex: 1,
+                    child: GestureDetector(
+                      child: Container(
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              '\n\n\Jack Edwar \n Blood Group O- \n Contact number: +92-345-6743294',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [RawMaterialButton(
+                                  child: Text(
+                                    'Details',
+                                    style: TextStyle(color: Colors.white, fontSize: 15),
+                                  ),
+                                  fillColor: Colors.deepOrangeAccent,
+                                  elevation: 10.0,
+                                  constraints: BoxConstraints.tightFor(width: 50.0, height: 50.0),
+                                  shape: CircleBorder(),
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pushReplacement(MaterialPageRoute(builder: (context) => ProfileApp()));
+                                  }
+                              ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        margin: EdgeInsets.all(15.0),
+                        decoration: BoxDecoration(
+                          color: Colors.black12,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
           ),
-        ],),
+        ),
+      ),
     );
   }
 }

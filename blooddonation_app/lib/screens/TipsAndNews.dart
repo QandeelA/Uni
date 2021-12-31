@@ -24,7 +24,7 @@ class TipsAndNews extends StatelessWidget {
                   const DrawerHeader(
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("Images/drop.jpg"),
+                          image: AssetImage("Images/data.png"),
                           fit: BoxFit.cover,
                         )
                     ), child: null,
@@ -94,11 +94,11 @@ class _TipsAndNewsPageState extends State<TipsAndNewsPage> {
                       margin: EdgeInsets.all(10),
                       child: Center(
                         child: Text(
-                          "index",
-                          style: TextStyle(color: Colors.white, fontSize: 15),
+                          "\n\n->Eating regularly before donating will help to keep your blood sugar levels stable.\n\n->This is important so that you don’t feel lightheaded or dizzy after your donation.\n\n->Having a snack before you donate can help maintain these blood sugar levels.\n\n->Ensuring that your diet contains foods rich in iron\n - such as meats and green leafy vegetables\n - will help to keep you feeling well during and after donation.",
+                          style: TextStyle(color: Colors.white, fontSize: 19),
                         ),
                       ),
-                      color: Colors.black45,
+                      color: Colors.cyan,
                     ),
                     Container(
                       height: 550,
@@ -110,7 +110,7 @@ class _TipsAndNewsPageState extends State<TipsAndNewsPage> {
                           style: TextStyle(color: Colors.white, fontSize: 15),
                         ),
                       ),
-                      color: Colors.black45,
+                      color: Colors.cyan,
                     ),
                   ],  ),
               ),

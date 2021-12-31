@@ -28,7 +28,7 @@ class ProfileApp extends StatelessWidget {
                   const DrawerHeader(
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("Images/drop.jpg"),
+                          image: AssetImage("Images/data.png"),
                           fit: BoxFit.cover,
                         )
                     ), child: null,
@@ -127,7 +127,7 @@ class ProfileApp extends StatelessWidget {
                                         child: Column(
                                           children: <Widget>[
                                             Text(
-                                              "Donor",
+                                              "Donor \t Blood Group O+",
                                               style: TextStyle(
                                                 color: Colors.redAccent,
                                                 fontSize: 22.0,

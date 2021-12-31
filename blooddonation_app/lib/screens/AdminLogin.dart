@@ -33,7 +33,7 @@ class AdminHome extends StatelessWidget {
                   const DrawerHeader(
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("Images/drop.jpg"),
+                          image: AssetImage("Images/data.png"),
                           fit: BoxFit.cover,
                         )
                     ), child: null,
@@ -170,16 +170,14 @@ class _AdminHomePageState extends State<AdminHomePage> {
                         child: Column(
                           children: <Widget>[
                             Text(
-                              '\n Profile 1',
+                              '\n\n\nAlice James \n Blood Group O+ \n Contact number: +92-345-6743294',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 22.0,
+                                fontSize: 15.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Text(
-                              '\n \n',
-                            ),
+
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               mainAxisAlignment: MainAxisAlignment.end,
@@ -217,16 +215,14 @@ class _AdminHomePageState extends State<AdminHomePage> {
 
                           children: <Widget>[
                             Text(
-                              '\n Profile 2',
+                              '\n\n\nQandeel \n Blood Group A+ \n Contact number: +92-345-6743294',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 22.0,
+                                fontSize: 15.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Text(
-                              '\n \n',
-                            ),
+
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               mainAxisAlignment: MainAxisAlignment.end,
@@ -260,16 +256,14 @@ class _AdminHomePageState extends State<AdminHomePage> {
                         child: Column(
                           children: <Widget>[
                             Text(
-                              '\n Profile 3',
+                              '\n\n\Jack Edwar \n Blood Group O- \n Contact number: +92-345-6743294',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 22.0,
+                                fontSize: 15.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Text(
-                              '\n \n',
-                            ),
+
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               mainAxisAlignment: MainAxisAlignment.end,

@@ -36,13 +36,13 @@ class SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        image: DecorationImage(image: AssetImage("Images/spalsh.png")),
+        image: DecorationImage(image: AssetImage("Images/gg.gif")),
       ),
     );
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds:2), onDoneLoading);
+    return Timer(const Duration(seconds:4), onDoneLoading);
   }
   onDoneLoading() async {
     Navigator.of(context)
